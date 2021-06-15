@@ -1,55 +1,62 @@
-<script defer src="./app.js"></script>
-
 const game = {
     title: 'Guess the Number!',
     biggestNum: 100,
     smallestNum: 1,
-    numGuesses: 0,
     secretNum: null,
-    prevGuesses:[],
+    prevGuesses: [],
+    
 
-    play: function() {
-        alert ("Guess A number!!!")
-
-        alert("Please type in the range of numbers you like to see your secret number in....")
-
-        //setting a range (smallest no and biggest no.) from user input
-        const inputNum = document.querySelector("numbers");
-        inputNum.setAttribute('min')
-        inputNum.setAttribute("max")
-
-        this.setSmallestNum ()
-        this.setBiggestNum ()
+    play: function(){
+        //   alert("Guess A number!!!")
         
+        //  let smallestNum = parseInt(prompt("Enter the smaller number "));
+        //  let biggestNum = parseInt(prompt("Enter the bigger number "));
+
+        //  while(isNaN(userInputmin))
+        //    smallestNum = parseInt(prompt('Enter the smaller number.'));
+        //  while(isNaN(userInputmax))
+        //     biggestNum= parseInt(prompt('Enter the biggest number.'));
+    
      //generating a secret num with random function
      //(1)Random Function
-        let y = getRandom
-         getRandom = function(){
+          
           this.secretNum = Math.floor(Math.random() * 
           (this.biggestNum - this.smallestNum + 1)) + this.smallestNum;
-     }
+
+          let guess = NaN;
+          while( guess != this.secretNum ){ 
+              guess = this.getGuess()
+              this.render(guess)
+
+          }
+     },
      
-     //(2)for the correct guesses by players 
+     //for the correct guesses by players 
      //(2)getGuess
-       x : document.getElementById("getGuess").nodeValue,
-       getGuess =function(){},
-       getGuess = 1,
-       document.getElementByID("submitguess".onclick = function(){
-    
-        //(2)the number guessed by the player
-
-     })
-    }
- }
-
- if (x==y)
-  {
-      alert("Congratuation!!! You GUESSED it RIGHT!!!" + getGuess + "at this guess")
-  }else if(x>y){
-      guess ++
-      alert("Sorry!!! Try a smaller Number")
-  }else{
-      guess++
-      alert("Sorry!! Try a bigger Number")
-
-  }
+       
+    getGuess : function(){
+        let guess = NaN
+        while(
+            isNaN(guess) ||
+            guess < this.smallestNum ||
+            guess > this.biggestNum
+            ){
+            guess = parseInt(prompt(`${this.secretNum}Enter a guess between ${this.smallestNum} and ${this.biggestNum}!`))
+        } 
+        return guess;
+     },
+       
+    render: function(guess){
+      if (guess == this.secretNum)
+     {
+      alert(`Congratuation!!! You GUESSED it RIGHT!!! in ${this.prevGuesses.length} guesses!!`)
+     }else if(guess> this.secretNum){
+      this.prevGuesses.push(guess)
+      alert(`Sorry!!! Try a smaller Number!! ,these are your guesses: ${this.prevGuesses}`)
+     }else{
+      this.prevGuesses.push(guess)
+      alert(`Sorry!! Try a bigger Number!! , these are your guesses: ${this.prevGuesses}`)
+     }
+     },
+} 
+game.play()
