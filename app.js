@@ -7,7 +7,7 @@ const game = {
     
 
     play: function(){
-        //   alert("Guess A number!!!")
+         alert("Guess A number!!!")
         
         //  let smallestNum = parseInt(prompt("Enter the smaller number "));
         //  let biggestNum = parseInt(prompt("Enter the bigger number "));
@@ -49,7 +49,7 @@ const game = {
     render: function(guess){
       if (guess == this.secretNum)
      {
-      alert(`Congratuation!!! You GUESSED it RIGHT!!! in ${this.prevGuesses.length} guesses!!`)
+      alert(`Congratuation!!! You GUESSED it RIGHT in ${this.prevGuesses.length} guesses!!`)
      }else if(guess> this.secretNum){
       this.prevGuesses.push(guess)
       alert(`Sorry!!! Try a smaller Number!! ,these are your guesses: ${this.prevGuesses}`)
