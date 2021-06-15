@@ -49,11 +49,11 @@ const game = {
     render: function(guess){
       if (guess == this.secretNum)
      {
-      alert(`Congratuation!!! You GUESSED it RIGHT in ${this.prevGuesses.length} guesses!!`)
-     }else if(guess> this.secretNum){
+      alert(`Congratuation!!! You GUESSED it RIGHT in ${this.prevGuesses.length} guesses! Yahoo!!`)
+     }if(guess> this.secretNum){
       this.prevGuesses.push(guess)
       alert(`Sorry!!! Try a smaller Number!! ,these are your guesses: ${this.prevGuesses}`)
-     }else{
+     }if(guess< this.secretNum){
       this.prevGuesses.push(guess)
       alert(`Sorry!! Try a bigger Number!! , these are your guesses: ${this.prevGuesses}`)
      }
